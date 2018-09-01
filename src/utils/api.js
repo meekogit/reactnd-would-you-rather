@@ -52,19 +52,6 @@ question =  {
   authedUser: id of the user answering the question
   qid:        id of the question being answered
   answer:     'optionOne' || 'optionTwo'
-}
-*/
-export function saveQuestion(question) {
-  return _saveQuestion(question)
-}
-
-/*
-RECEIVES:
-answer = { 
-  authedUser: id of the user answering the question
-  qid:        id of the question being answered
-  answer:     'optionOne' || 'optionTwo'
-  }
 RETURNS:
 question = {
     id:           question id
@@ -77,6 +64,18 @@ question = {
     optionTwo: {
       votes:      array of ids of users who votes for option 2 (initially [])
       text:       text of the actual option
+}
+*/
+export function saveQuestion(question) {
+  return _saveQuestion(question)
+}
+
+/*
+RECEIVES:
+answer = { 
+  authedUser: id of the user answering the question
+  qid:        id of the question being answered
+  answer:     'optionOne' || 'optionTwo'
   }
 */
 export function saveAnswer(answer) {
