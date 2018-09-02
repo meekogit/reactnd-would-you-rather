@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Question from './Question';
 
 class Dashboard extends Component {
   
@@ -39,10 +40,11 @@ class Dashboard extends Component {
           </button>
         </div>
         <div>
-          <lu>
-            {/*TODO: create a question preview component to display each question */}
-            { list.map((id) => (<li key={id}>{id}</li>))}
-          </lu>
+          <ul>
+            { list.map((id) => (
+              <Question key={id} id={id} />
+            ))}
+          </ul>
         </div>
       </div>
     )
