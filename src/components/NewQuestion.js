@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { handleAddQuestion } from '../actions/questions';
+import { handleAddQuestion } from '../actions/shared';
 import { connect } from 'react-redux';
 
 class NewQuestion extends Component {
@@ -23,6 +23,7 @@ class NewQuestion extends Component {
     const { optionOneText, optionTwoText } = this.state;
     event.preventDefault();
     this.props.dispatch(handleAddQuestion(optionOneText, optionTwoText));
+    // TODO: redirect to Dashboard
   }
 
   render() {
