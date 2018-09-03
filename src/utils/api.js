@@ -49,9 +49,9 @@ export function getInitialData() {
 /* 
 RECEIVES:
 question =  { 
-  authedUser: id of the user answering the question
-  qid:        id of the question being answered
-  answer:     'optionOne' || 'optionTwo'
+  author:         id of the user creating the question
+  optionOneText:  text of the first option
+  optionTwoText:  text of the second option
 RETURNS:
 question = {
     id:           question id
@@ -67,6 +67,7 @@ question = {
 }
 */
 export function saveQuestion(question) {
+  console.log(question)
   return _saveQuestion(question)
 }
 
@@ -78,6 +79,8 @@ answer = {
   answer:     'optionOne' || 'optionTwo'
   }
 */
+
+//TODO:  replace todos with the actual vars the Database is waiting for
 export function saveAnswer(answer) {
   return _saveQuestionAnswer(answer)
 }
