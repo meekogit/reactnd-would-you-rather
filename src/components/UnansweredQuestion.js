@@ -27,7 +27,7 @@ class UnansweredQuestion extends Component {
 
   render() {
     const { author, question } = this.props;
-    const avatarURL = require(`../utils/avatars/${author.avatarURL}`)
+    const avatarURL = require(`../utils/avatars/${author.avatarURL}`);
     return(
       <div>
         <img
