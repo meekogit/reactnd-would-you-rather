@@ -7,16 +7,16 @@ class Question extends Component {
     const avatarURL = require(`../utils/avatars/${author.avatarURL}`)
 
     return (
-      <li key={question.id}>
-        <h3>{`${author.name} Asks:`}</h3>
+      <div>
         <img
           src={avatarURL}
           alt={`Avatar of ${author.name}`}
           className="avatar"
         />
+        <h3>{`${author.name} Asks:`}</h3>
         <p>{`Would you rather ${question.optionOne.text} or ${question.optionTwo.text}?`}</p>
         <a href="#">View Poll</a>
-      </li>
+      </div>
     );
   }
 }

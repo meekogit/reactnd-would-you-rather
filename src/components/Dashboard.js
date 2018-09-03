@@ -42,7 +42,9 @@ class Dashboard extends Component {
         <div>
           <ul>
             { list.map((id) => (
-              <Question key={id} id={id} />
+              <li key={id}>
+                <Question id={id} />
+              </li>
             ))}
           </ul>
         </div>
