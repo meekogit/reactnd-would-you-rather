@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
-class AnsweredQuestion extends Component {
-  render() {
-    const { author, question, userAnswer } = this.props;
+const AnsweredQuestion = ({ author, question, userAnswer }) => {
     const avatarURL = require(`../utils/avatars/${author.avatarURL}`);
     const { optionOne, optionTwo, totalVotes } = question;
     return (
@@ -28,7 +26,6 @@ class AnsweredQuestion extends Component {
         </div>
       </div>
     );
-  }
 }
 
 function mapStateToProps({ users, authedUser, questions }, { id }) {

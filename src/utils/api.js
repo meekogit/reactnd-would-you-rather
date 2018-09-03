@@ -67,7 +67,6 @@ question = {
 }
 */
 export function saveQuestion(question) {
-  console.log(question)
   return _saveQuestion(question)
 }
 

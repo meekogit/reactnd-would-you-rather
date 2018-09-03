@@ -1,29 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { formatDate } from '../utils/helpers';
 import { Link } from 'react-router-dom';
 
-class Question extends Component {
-  render() {
-    const { question, author } = this.props;
-    const avatarURL = require(`../utils/avatars/${author.avatarURL}`);
-
-    return (
-      <div>
-        <img
-          src={avatarURL}
-          alt={`Avatar of ${author.name}`}
-          className="avatar"
-        />
-        <h3>{`${author.name} Asks:`}</h3>
-        <span>{formatDate(question.timestamp)}</span>
-        <p>{`Would you rather ${question.optionOne.text} or ${question.optionTwo.text}?`}</p>
-        <Link
-          to={`/questions/${question.id}`}
-        >View Poll</Link>
-      </div>
-    );
-  }
+const Question = ({ question, author }) => {
+  const avatarURL = require(`../utils/avatars/${author.avatarURL}`);
+  return (
+    <div>
+      <img
+        src={avatarURL}
+        alt={`Avatar of ${author.name}`}
+        className="avatar"
+      />
+      <h3>{`${author.name} Asks:`}</h3>
+      <span>{formatDate(question.timestamp)}</span>
+      <p>{`Would you rather ${question.optionOne.text} or ${question.optionTwo.text}?`}</p>
+      <Link
+        to={`/questions/${question.id}`}
+      >View Poll</Link>
+    </div>
+  );
 }
 
 function mapStateToProps({ questions, users }, { id }) {
