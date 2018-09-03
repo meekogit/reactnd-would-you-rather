@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import AccountTools from './AccountTools';
 
 export default function Nav() {
   return (
@@ -21,6 +22,7 @@ export default function Nav() {
           </NavLink>
         </li>
       </ul>
+      <AccountTools />
     </nav>
   );
 } 

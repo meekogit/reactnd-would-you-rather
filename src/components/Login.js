@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 
 class Login extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {selectedUser: ''};
@@ -19,13 +20,16 @@ class Login extends Component {
 
   handleSignIn = (event) => {
     event.preventDefault();
+    const { from } = this.props.location.state || {from: { pathname: '/' }};
     const { selectedUser } = this.state;
     this.props.dispatch(setAuthedUser(selectedUser));
+    this.props.history.push(from.pathname);
   }
 
   render() {
-    const { users, userIDs } = this.props
-    const { selectedUser } = this.state
+    const { users, userIDs } = this.props;
+    const { selectedUser } = this.state;
+
     return (
       <div>
         <h3>Welcome to the Would You Rather App!</h3>
@@ -33,23 +37,25 @@ class Login extends Component {
           <label>
             Select a user to impersonate:
             <select value={selectedUser} onChange={this.handleUserSelection}>
+                <option value="" disabled>Select user</option>
               {userIDs.map( id => (
                 <option key={id} value={id}>{users[id].name}</option>
               ))}
             </select>
           </label>
-          <input type="submit" value="Sign In" />
+          <input type="submit" value="Sign In" disabled={selectedUser === ''}/>
         </form>
       </div>
     );
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
   return {
     userIDs: Object.keys(users)
       .sort((a, b) => (users[a].name.toLowerCase() > users[b].name.toLowerCase() ) ? 1 : -1),
-    users
+    users,
+    authedUser
   }
 }
 
