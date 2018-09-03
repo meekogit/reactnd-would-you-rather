@@ -3,6 +3,7 @@ import { showLoading, hideLoading } from 'react-redux-loading';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
+export const ADD_VOTE = 'ADD_VOTE';
 
 export function receiveQuestions(questions) {
   return {
@@ -18,6 +19,13 @@ function addQuestion(question) {
   };
 }
 
+export function addVote(vote) {
+  return {
+    type: ADD_VOTE,
+    vote
+  }
+}
+
 export function handleAddQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
@@ -26,7 +34,6 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
     return saveQuestion({author: authedUser, optionOneText, optionTwoText})
       .then(question => {
         dispatch(addQuestion(question));
-        console.log(question);
       })
       .then(() => dispatch(hideLoading()));
   }
