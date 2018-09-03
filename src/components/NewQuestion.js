@@ -23,7 +23,8 @@ class NewQuestion extends Component {
     const { optionOneText, optionTwoText } = this.state;
     event.preventDefault();
     this.props.dispatch(handleAddQuestion(optionOneText, optionTwoText));
-    // TODO: redirect to Dashboard
+    this.props.history.push('/');
+    
   }
 
   render() {

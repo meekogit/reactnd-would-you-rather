@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { formatDate } from '../utils/helpers';
+import { Link } from 'react-router-dom';
 
 class Question extends Component {
   render() {
     const { question, author } = this.props;
-    const avatarURL = require(`../utils/avatars/${author.avatarURL}`)
+    const avatarURL = require(`../utils/avatars/${author.avatarURL}`);
 
     return (
       <div>
@@ -17,7 +18,9 @@ class Question extends Component {
         <h3>{`${author.name} Asks:`}</h3>
         <span>{formatDate(question.timestamp)}</span>
         <p>{`Would you rather ${question.optionOne.text} or ${question.optionTwo.text}?`}</p>
-        <a href="#">View Poll</a>
+        <Link
+          to={`/questions/${question.id}`}
+        >View Poll</Link>
       </div>
     );
   }

@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
-import Dashboard from './Dashboard';
 import LoadingBar from 'react-redux-loading';
+import Dashboard from './Dashboard';
+import Leaderboard from './Leaderboard';
+import Nav from './Nav';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import NewQuestion from './NewQuestion';
+import QuestionPage from './QuestionPage';
 
 class App extends Component {
   
@@ -12,18 +17,33 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App">
-        <LoadingBar />
-        <h1>Would You Rather</h1>
-        {!this.props.loading && <Dashboard />}
-      </div>
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          <div className="container">
+
+            <Nav />
+            {this.props.loading
+              ? null
+              : <div>
+                  <Route path='/' exact component={Dashboard} />
+                  <Route path='/add' component={NewQuestion} />
+                  <Route path='/questions/:id' component={QuestionPage} />
+                  <Route path='/leaderboard' component={Leaderboard} />
+                </div>
+            }
+          </div>
+        </Fragment>    
+      </Router>
     );
   }
 }
 
-function mapStateToProps({ loadingBar }) {
+function mapStateToProps({ questions, users }) {
   return {
-    loading: loadingBar.default === 1 ? true : false 
+    // TODO: change this horrible code to authedUser !== null 
+    // or back to loadingBar or change to authenticated flag
+    loading: Object.keys(questions).length === 0 || Object.keys(users).length === 0
   }
 }
 
