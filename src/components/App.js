@@ -5,33 +5,36 @@ import LoadingBar from 'react-redux-loading';
 import Dashboard from './Dashboard';
 import Leaderboard from './Leaderboard';
 import Nav from './Nav';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NewQuestion from './NewQuestion';
 import QuestionPage from './QuestionPage';
+import Login from './Login';
+import RestrictedRoute from './RestrictedRoute';
+import PageNotFound from './PageNotFound';
 
 class App extends Component {
   
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
-  
+
   render() {
     return (
       <Router>
         <Fragment>
           <LoadingBar />
           <div className="container">
-
-            <Nav />
-            {this.props.loading
-              ? null
-              : <div>
-                  <Route path='/' exact component={Dashboard} />
-                  <Route path='/add' component={NewQuestion} />
-                  <Route path='/questions/:id' component={QuestionPage} />
-                  <Route path='/leaderboard' component={Leaderboard} />
-                </div>
-            }
+            <div>
+              <Nav />
+              <Switch>
+                <RestrictedRoute path='/' exact component={Dashboard} />
+                <RestrictedRoute path='/add' component={NewQuestion} />
+                <RestrictedRoute path='/questions/:id' component={QuestionPage} />
+                <RestrictedRoute path='/leaderboard' component={Leaderboard} />
+                <Route path='/login' component={Login} />
+                <Route component={PageNotFound} />
+              </Switch>
+            </div>
           </div>
         </Fragment>    
       </Router>
@@ -39,11 +42,9 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ questions, users }) {
+function mapStateToProps({ authedUser }) {
   return {
-    // TODO: change this horrible code to authedUser !== null 
-    // or back to loadingBar or change to authenticated flag
-    loading: Object.keys(questions).length === 0 || Object.keys(users).length === 0
+    authedUser
   }
 }
 
