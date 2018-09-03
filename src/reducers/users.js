@@ -17,7 +17,6 @@ export default function users(state = {}, action) {
         }
       };
     case ADD_ANSWER:
-      console.log(action);
       const { qid, authedUser, answer } = action.answer;
       return {
         ...state,
