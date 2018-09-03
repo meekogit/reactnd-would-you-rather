@@ -39,8 +39,7 @@ class NewQuestion extends Component {
               placeholder="Enter first option"
               value={this.state.optionOneText} 
               onChange={this.handleChange}
-            >
-            </input>
+            />
             <p>or</p>
             <input 
               type="text"
@@ -48,15 +47,13 @@ class NewQuestion extends Component {
               placeholder="Enter second option"
               value={this.state.optionTwoText}
               onChange={this.handleChange}
-            >
-            </input>
+            />
           </label>
           <input 
             type="submit"
             value="Create"
             disabled={optionOneText === '' || optionTwoText=== ''}
-          >
-          </input>
+          />
         </form>
       </div>
     )
