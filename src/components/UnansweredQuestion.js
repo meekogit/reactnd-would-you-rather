@@ -29,14 +29,16 @@ class UnansweredQuestion extends Component {
     const { author, question } = this.props;
     const avatarURL = require(`../utils/avatars/${author.avatarURL}`);
     return(
-      <div>
-        <img
-          src={avatarURL}
-          alt={`Avatar of ${author.name}`}
-          className="avatar"
-        />
-        <h3>{author.name} asks:</h3>
-        <form onSubmit={this.handleSubmit}>
+      <div className="poll">
+        <div className="author-details">
+          <img
+            src={avatarURL}
+            alt={`Avatar of ${author.name}`}
+            className="avatar"
+          />
+          <h3>{author.name} asks:</h3>
+        </div>
+        <form className="poll-form" onSubmit={this.handleSubmit}>
           <p>Would you rather...</p>
           <label>
             <input 

@@ -31,19 +31,19 @@ class Login extends Component {
     const { selectedUser } = this.state;
 
     return (
-      <div>
+      <div className="form-container">
         <h3>Welcome to the Would You Rather App!</h3>
         <form onSubmit={this.handleSignIn}>
           <label>
             Select a user to impersonate:
-            <select value={selectedUser} onChange={this.handleUserSelection}>
-                <option value="" disabled>Select user</option>
-              {userIDs.map( id => (
-                <option key={id} value={id}>{users[id].name}</option>
-              ))}
-            </select>
           </label>
-          <input type="submit" value="Sign In" disabled={selectedUser === ''}/>
+          <select value={selectedUser} onChange={this.handleUserSelection}>
+            <option value="" disabled>Select user</option>
+            {userIDs.map( id => (
+              <option key={id} value={id}>{users[id].name}</option>
+            ))}
+          </select>
+          <input className="submit-btn" type="submit" value="Sign In" disabled={selectedUser === ''}/>
         </form>
       </div>
     );

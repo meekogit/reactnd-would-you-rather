@@ -22,19 +22,17 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <LoadingBar />
+          <Nav />
+          <LoadingBar className={'loading-bar'}/>
           <div className="container">
-            <div>
-              <Nav />
-              <Switch>
-                <RestrictedRoute path='/' exact component={Dashboard} />
-                <RestrictedRoute path='/add' component={NewQuestion} />
-                <RestrictedRoute path='/questions/:id' component={QuestionPage} />
-                <RestrictedRoute path='/leaderboard' component={Leaderboard} />
-                <Route path='/login' component={Login} />
-                <Route component={PageNotFound} />
-              </Switch>
-            </div>
+            <Switch>
+              <RestrictedRoute path='/' exact component={Dashboard} />
+              <RestrictedRoute path='/add' component={NewQuestion} />
+              <RestrictedRoute path='/questions/:id' component={QuestionPage} />
+              <RestrictedRoute path='/leaderboard' component={Leaderboard} />
+              <Route path='/login' component={Login} />
+              <Route component={PageNotFound} />
+            </Switch>
           </div>
         </Fragment>    
       </Router>

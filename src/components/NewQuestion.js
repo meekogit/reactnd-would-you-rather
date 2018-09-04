@@ -30,11 +30,13 @@ class NewQuestion extends Component {
   render() {
     const { optionOneText, optionTwoText } = this.state;
     return (
-      <div>
+      <div className="form-container">
         <h3>Create a new question</h3>
         <form onSubmit={this.handleSubmit}>
           <label>
             Would you rather...
+          </label>
+          <div className="options-input">
             <input 
               type="text" 
               id="optionOneText"
@@ -50,11 +52,12 @@ class NewQuestion extends Component {
               value={this.state.optionTwoText}
               onChange={this.handleChange}
             />
-          </label>
+          </div>
           <input 
             type="submit"
             value="Create"
             disabled={optionOneText === '' || optionTwoText=== ''}
+            className="submit-btn"
           />
         </form>
       </div>

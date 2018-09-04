@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Question = ({ question, author }) => {
   const avatarURL = require(`../utils/avatars/${author.avatarURL}`);
   return (
-    <div>
+    <div className="card">
       <img
         src={avatarURL}
         alt={`Avatar of ${author.name}`}

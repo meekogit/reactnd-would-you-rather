@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import Scorecard from './Scorecard';
 
 const Leaderboard = ({ userIds }) => (
-  <div>
-    <h1>Leaderboard</h1>
-    <ul>
+  <div className="leaderboard">
+    <ul className="list">
       {userIds.map(uid => (
         <li key={uid}>
           <Scorecard id={uid} />

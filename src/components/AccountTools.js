@@ -13,23 +13,28 @@ class AccountTools extends Component {
   render() {
     const { avatarURL, name, isAuthenticated } = this.props.account;
     let avatar = avatarURL;
-    if (isAuthenticated)
+    let component = null;
+    if (isAuthenticated) {
       avatar = require(`../utils/avatars/${avatarURL}`);
-    return (
-      <div>
-        {isAuthenticated &&
-          <div>
-            <img
-              src={avatar}
-              alt={`Avatar of ${name}`}
-              className="avatar"
-            />
-            <span>{name}</span>
-            <button onClick={this.handleClick}>Sign out</button>
-          </div>
-        }
-      </div>
-    )
+      component = <div className="account-tools"> 
+                    <div className="account-details">
+                      <img
+                        src={avatar}
+                        alt={`Avatar of ${name}`}
+                        className="round-avatar"
+                      />
+                    </div>
+                    <span>{name}</span>
+                    <button
+                      className="signout-btn" 
+                      onClick={this.handleClick}
+                    >
+                      Sign out
+                    </button>
+                  </div>
+    }
+
+    return (component);
   }
 }
 

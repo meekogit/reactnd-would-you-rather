@@ -29,18 +29,26 @@ class Dashboard extends Component {
       ? this.props.unansweredQids 
       : this.props.answeredQids;
 
+      const { show } = this.state;
+
     return (
       <div>
-        <div>
-          <button id="unanswered" onClick={this.handleClick}>
+        <div className="toggle-categories">
+          <button 
+            id="unanswered" 
+            onClick={this.handleClick} 
+            className={show === 'unanswered' ? 'selected-btn' : 'none'}>
             Unanswered Question
           </button>
-          <button id="answered" onClick={this.handleClick}>
+          <button 
+            id="answered" 
+            onClick={this.handleClick}
+            className={show === 'answered' ? 'selected-btn' : 'none'}>
             Answered Question
           </button>
         </div>
         <div>
-          <ul>
+          <ul className="list question-list">
             { list.map((id) => (
               <li key={id}>
                 <Question id={id} />

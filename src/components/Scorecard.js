@@ -6,16 +6,24 @@ const Scorecard = ({ user }) => {
   const avatar = require(`../utils/avatars/${avatarURL}`);
 
   return (
-    <div>
-      <h3>{name}</h3>
+    <div className="card scorecard">
       <img
         src={avatar}
         alt={`Avatar of ${name}`}
         className="avatar"
       />
-      <p>{`Questions answered = ${answers}`}</p>
-      <p>{`Questions created = ${questions}`}</p>
-      <p>{`Score = ${answers + questions}`}</p>
+      <h3>{name}</h3>
+      <div className="partial-score">
+        <p>{`Questions answered ${answers}`}</p>
+        <hr></hr>
+        <p>{`Questions created ${questions}`}</p>
+      </div>
+      <div className="score">
+        <p>Score</p>
+        <div>
+          {answers + questions}
+        </div>
+      </div>
     </div>
   );
 }
