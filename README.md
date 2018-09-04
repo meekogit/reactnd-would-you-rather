@@ -29,4 +29,9 @@ $ npm start
 - Enhance styling of the application
 
 ## License
+
 Code released under the [MIT License](https://mit-license.org/)
+
+## Credits
+
+Vector graphics used in the application by [Freepik](www.flaticon.com)
